@@ -11,4 +11,4 @@ class PostForm(forms.ModelForm):
 class DateForm(forms.ModelForm):
     class Meta:
         model=DatePost
-        fields=('date','type','amount')
+        fields=('number','date','type','amount')
