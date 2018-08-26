@@ -16,11 +16,14 @@
     <div class="content container">
         <div class="row">
             <div class="col-md-8">
-            <h1>Start Date {{ startDates.date }}</h1>
-
+            <h1>Start Date = {{ startDates.date }}</h1>
+            <p>Vehicle Number = {{ startDates.number }}</p>
+            <p>Amount = {{ amount }}</p>
+            <p>type {{ startDates.type }}</p>
                 {% for date in dates %}
         <div class="post">
             <h1>{{ date.date|linebreaksbr  }}</h1>
+            <p>Amount = {{ date.amount }}</p>
         </div>
     {% endfor %}
 </div>
