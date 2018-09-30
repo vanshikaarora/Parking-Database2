@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db import models
 from django.views.decorators.csrf import csrf_exempt
 
-from DatabaseParking.forms import PostForm, DateForm
-from DatabaseParking.models import Post, DatePost
+from .forms import PostForm, DateForm
+from .models import Post, DatePost
 
 @csrf_exempt
 def post_list(request):
@@ -63,16 +63,19 @@ def post_add(request):
         print(vn)
         print (vd)
         print (va)
+        ob = get_object_or_404(Post, pk=vn)
+        ob.total=ob.total+int(va)
+        ob.save()
         testkey=get_object_or_404(Post,pk=vn)
         sample=DatePost.objects.create(number=testkey,date=vd,amount=va)
         print (sample)
         form = DateForm(request.POST)
         print(request.body)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
+        #if form.is_valid():
+         #   post = form.save(commit=False)
+          #  post.author = request.user
+           # post.save()
             #return redirect('post_list', number=post.number)
-    else:
+    #else:
         form = DateForm()
     return render(request, 'park/post_add.html', {'form': form})
