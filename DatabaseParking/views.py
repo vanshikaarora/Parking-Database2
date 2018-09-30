@@ -77,5 +77,5 @@ def post_add(request):
            # post.save()
             #return redirect('post_list', number=post.number)
     #else:
-        form = DateForm()
+        #form = DateForm()
     return render(request, 'park/post_add.html', {'form': form})
